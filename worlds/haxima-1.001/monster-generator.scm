@@ -108,7 +108,7 @@
 ;; mk-wilderness-ambush-generator -- make an object type for spawning random
 ;; ambush encounters
 ;; ----------------------------------------------------------------------------
-(define (mk-wilderness-ambush-generator-type tag threshold party faction)
+(define (mk-wilderness-ambush-generator-type tag threshold max party faction)
   (mk-obj-type tag                ;; tag
                nil                ;; name
                nil                ;; sprite
