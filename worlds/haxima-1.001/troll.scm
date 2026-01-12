@@ -4,8 +4,8 @@
 ;   (apply display args))
 ; (define (troll-newline) (newline))
 
-(define (troll-display . args) )
-(define (troll-newline) )
+(define (troll-display . args) (if #f #f))
+(define (troll-newline) (if #f #f))
 
 
 ;;----------------------------------------------------------------------------
