@@ -25,7 +25,7 @@
                nil                 ; container
                nil                 ; readied
                )
- (gregor-mk #f #f))
+ (gregor-mk))
 
 ;;-----------------------------------------------------------------------------
 ;; Make some chests containing items to get the player started. 
