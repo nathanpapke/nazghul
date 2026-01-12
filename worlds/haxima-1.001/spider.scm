@@ -10,8 +10,8 @@
 ;   (apply display args))
 ; (define (spider-newline) (newline))
 
-(define (spider-display . args) )
-(define (spider-newline) )
+(define (spider-display . args) (if #f #f))
+(define (spider-newline) (if #f #f))
 
 ;; ----------------------------------------------------------------------------
 ;; Spider Egg
