@@ -50,7 +50,7 @@
 ;; character is a monster, guard or similar cannon-fodder NPC, with no
 ;; interesting conversation, no schedule of appointments, etc.
 (define (mk-stock-char name species occupation sprite faction ai container 
-                       arms)
+                       arms . extra)
   (kern-mk-char
    nil ;;..........tag
    name ;;.........name
