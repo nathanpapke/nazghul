@@ -311,8 +311,8 @@
   )
  (list 'trigrave-entry) ;; hooks
  (list  ;; edge entrances
-  (list south 18 0)
-  (list north  12 31)
+  (list north 18 0)
+  (list south  12 31)
   )
  )
 
