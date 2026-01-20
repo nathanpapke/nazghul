@@ -50,13 +50,13 @@
 ;; handlers
 (define (bim-on kobj khandler) 
   (display "bim-on")(newline)
-  (bim-change-state kobj khandler #t 'on)
+  (bim-change-state kobj khandler #t)
   (bim-send-signal kobj 'on)
   )
 
 (define (bim-off kobj khandler) 
   ;;(display "bim-off")(newline)
-  (bim-change-state kobj khandler #f 'on)
+  (bim-change-state kobj khandler #f)
   (bim-send-signal kobj 'off)
   )
 
