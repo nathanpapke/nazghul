@@ -9,8 +9,8 @@
 ;   (apply display args))
 ; (define (spider-newline) (newline))
 
-(define (spider-display . args) )
-(define (spider-newline) )
+(define (spider-display . args) (if #f #f))
+(define (spider-newline) (if #f #f))
 
 ;; ----------------------------------------------------------------------------
 ;; Spider Egg
@@ -31,7 +31,6 @@
 ;; neighboring tiles contained non-spiders. I discontinued it because it made
 ;; eggs run too slowly (about 30ms per). Replaced it with a simple egg timer.
 (define (spider-egg-disturbed kegg)
-  (spider-display "spider-egg-disturbed")(spider-newline)
   (define (check val loc)
     ;;(display "loc:")(display loc)(newline)
     (or val
@@ -40,6 +39,7 @@
                                       (not (is-spider? b)))))
                #f
                (kern-get-objects-at loc))))
+  (spider-display "spider-egg-disturbed")(spider-newline)
   (let ((loc (kern-obj-get-location kegg)))
     (kern-fold-rect (loc-place loc)
                     (- (loc-x loc) 2)

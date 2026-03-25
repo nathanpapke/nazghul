@@ -4,8 +4,8 @@
 ;   (apply display args))
 ; (define (troll-newline) (newline))
 
-(define (troll-display . args) )
-(define (troll-newline) )
+(define (troll-display . args) (if #f #f))
+(define (troll-newline) (if #f #f))
 (define troll-melee-weapon t_horns)
 
 ;;----------------------------------------------------------------------------
@@ -96,7 +96,6 @@
 ;; with terrain that can be converted to ammo objects.
 ;; ----------------------------------------------------------------------------
 (define (troll-find-nearest-ammo ktroll)
-  (troll-display "troll-find-nearest-ammo")(troll-newline)
   (define (scanobjlst lst)
     (foldr (lambda (a b) 
              (or a (eqv? (kern-obj-get-type b) troll-ranged-weapon)))
@@ -108,6 +107,7 @@
         (if (scanobjlst (kern-get-objects-at loc))
             (cons loc lst)
             lst)))
+  (troll-display "troll-find-nearest-ammo")(troll-newline)
   (let* ((loc (kern-obj-get-location ktroll))
          (rad (kern-obj-get-vision-radius ktroll))
          (coords (profile foldr-rect (loc-place loc)
@@ -134,7 +134,6 @@
     (profile loc-closest loc coords)))
 
 (define (troll-find-nearest-ammo3 ktroll)
-  (troll-display "troll-find-nearest-ammo3")(troll-newline)
   (define (scanobjlst lst)
     (foldr (lambda (a b) 
              (or a (eqv? (kern-obj-get-type b) troll-ranged-weapon)))
@@ -146,6 +145,7 @@
         (if (scanobjlst (kern-get-objects-at loc))
             (cons loc lst)
             lst)))
+  (troll-display "troll-find-nearest-ammo3")(troll-newline)
   (let* ((loc (kern-obj-get-location ktroll))
          (rad (kern-obj-get-vision-radius ktroll))
          (coords (profile kern-fold-rect (loc-place loc)

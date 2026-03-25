@@ -135,30 +135,29 @@
 (define (cast-wind-spell origin proc field-type)
   (let ((dir (ui-get-direction)))
     (if (null? dir) nil
-        (begin
-          (define (dropfield loc)
+        (letrec (
+          (dropfield (lambda (loc))
             (if (kern-is-valid-location? loc)
-                (kern-obj-put-at (kern-mk-obj field-type 1) loc)))
-          (define (is-my-field? kobj) (eqv? field-type (kern-obj-get-type kobj)))
-          (define (rmfield loc)
+                (kern-obj-put-at (kern-mk-obj field-type 1) loc))))
+          (is-my-field? (lambda (kobj) (eqv? field-type (kern-obj-get-type kobj))))
+          (rmfield (lambda (loc)
             (if (> (kern-dice-roll "2d20") 16)
                 (let ((fields (filter is-my-field? (kern-get-objects-at loc))))
                   (cond ((null? fields) nil)
                         (else
-                         (kern-obj-remove (car fields)))))))
-          (define (doline line)
+                         (kern-obj-remove (car fields))))))))
+          (doline (lambda (line)
             (map (lambda (loc)
                    (map proc (kern-get-objects-at loc)))
                  line)
             (map dropfield line)
             (kern-map-repaint)
-            (map rmfield line)
-            )
-          (let ((lines (get-cone origin 10 dir)))
-            (cond ((null? lines) nil)
-                  (else
-                   (map doline (cdr lines))
-                   (kern-map-repaint))))))))
+            (map rmfield line))))
+        (let ((lines (get-cone origin 10 dir)))
+          (cond ((null? lines) nil)
+                (else
+                 (map doline (cdr lines))
+                 (kern-map-repaint)))))))
 
 ;; This version:
 ;;   o has caller-limited depth
